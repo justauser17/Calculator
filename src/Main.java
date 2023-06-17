@@ -49,7 +49,7 @@ public class Main {
         int num1, num2;
         String operator = array[1];
 
-        if (isRoman(array[0])) {
+        if (isRoman(array[0]) && isRoman(array[2])) {
             num1 = romanToArab(array[0]);
             num2 = romanToArab(array[2]);
         } else {
