@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main2 {
+public class Main {
 
     private static final String[] romanNum = {"C", "XC", "L", "XL", "X", "IX","VIII", "VII", "VI", "V", "IV", "III", "II", "I"};
     private static final int[] num = {100, 90, 50, 40, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
