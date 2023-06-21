@@ -83,9 +83,9 @@ public class Main2 {
                     case "-" -> num1 - num2;
                     case "*" -> num1 * num2;
                     case "/" -> num1 / num2;
-                    default -> throw new IllegalArgumentException("неверный знак");
+                    default -> throw new Exception("неверный знак");
                 };
-            } else throw new NumberFormatException("неверный диапазон чисел");
+            } else throw new Exception("неверный диапазон чисел");
             return Integer.toString(result);
         }
     }
