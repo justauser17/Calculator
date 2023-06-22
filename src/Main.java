@@ -14,8 +14,8 @@ public class Main {
     public static int romanToArab(String romanNumber) {
 
         int arabNum = 0;
-        for (int i = 0; i < num.length; i++) {
-            while (romanNumber.startsWith(romanNum[i])) {
+        for (int i = 0; i < num.length; i++){
+            while (romanNumber.startsWith(romanNum[i])){
                 arabNum += num[i];
                 romanNumber = romanNumber.substring(romanNum[i].length());
             }
@@ -46,47 +46,43 @@ public class Main {
 
     public static String calc(String input) throws Exception {
         String[] array = input.split(" ");
-        if (array.length > 3){
-            throw new Exception("операндов не может быть больше двух");
+        if  (array.length > 3){
+            throw new Exception("Только два операнда");
         }
         int num1, num2;
         String operator = array[1];
 
+
         if (isRoman(array[0]) && isRoman(array[2])) {
             num1 = romanToArab(array[0]);
             num2 = romanToArab(array[2]);
+        } else if (!isRoman(array[0]) && !isRoman(array[2])) {
+            num1 = Integer.parseInt(array[0]);
+            num2 = Integer.parseInt(array[2]);
+        } else {
+            throw new Exception("используются одновременно разные системы счисления");
+        }
 
-            int result;
-            if (num1 > 0 && num1 <= 10 && num2 > 0 && num2 <= 10) {
-                result = switch (operator) {
-                    case "+" -> num1 + num2;
-                    case "-" -> num1 - num2;
-                    case "*" -> num1 * num2;
-                    case "/" -> num1 / num2;
-                    default -> throw new Exception("неверный знак");
-                };
-            } else throw new Exception("неверный диапазон чисел");
 
-            if (result < 1) {
+        int result;
+        if (num1 > 0 && num1 <= 10 && num2 > 0 && num2 <= 10) {
+            result = switch (operator) {
+                case "+" -> num1 + num2;
+                case "-" -> num1 - num2;
+                case "*" -> num1 * num2;
+                case "/" -> num1 / num2;
+                default -> throw new Exception("неверный знак");
+            };
+        } else throw new Exception("неверный диапазон чисел");
+
+
+        if (isRoman(array[0])) {
+            if (result < 1){
                 throw new Exception("результат не может быть меньше 1");
             }
             return arabToRoman(result);
-
         } else {
-            num1 = Integer.parseInt(array[0]);
-            num2 = Integer.parseInt(array[2]);
-
-            int result;
-            if (num1 > 0 && num1 <= 10 && num2 > 0 && num2 <= 10) {
-                result = switch (operator) {
-                    case "+" -> num1 + num2;
-                    case "-" -> num1 - num2;
-                    case "*" -> num1 * num2;
-                    case "/" -> num1 / num2;
-                    default -> throw new Exception("неверный знак");
-                };
-            } else throw new Exception("неверный диапазон чисел");
-            return Integer.toString(result);
-        }
+        return Integer.toString(result);}
     }
+
 }
